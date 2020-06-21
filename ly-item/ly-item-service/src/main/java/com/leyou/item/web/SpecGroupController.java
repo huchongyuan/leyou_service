@@ -22,11 +22,10 @@ public class SpecGroupController {
 
     @GetMapping("/groups")
     public ResponseEntity<List<SpecGroup>> queryGroupsById(@RequestParam(value="cid") Long cid){
-        System.out.println(cid);
         return ResponseEntity.ok(specGroupService.queryGroupsById(cid));
     }
     @PostMapping("/groups/add")
-    public ResponseEntity<Void> addGroups(SpecGroup specGroup){
+    public ResponseEntity<Void> addGroups(@RequestBody SpecGroup specGroup){
         specGroupService.addGroups(specGroup);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
